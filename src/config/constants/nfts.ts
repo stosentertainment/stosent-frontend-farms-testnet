@@ -50,7 +50,7 @@ const Nfts: Nft[] = [
     sortOrder: 999,
     bunnyId: 2,
     fileType: 'mp4',
-    nftId: 3,
+    nftId: 2,
     tokenAmount: 15,
     tokenSupply: 10,
     nftFarmContract: '0x3627Ca89675b42489aD39619A92dd0Ce24CA90bB',
