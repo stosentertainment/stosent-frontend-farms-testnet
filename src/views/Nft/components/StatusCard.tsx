@@ -18,7 +18,7 @@ import NftInWalletCard from './NftInWalletCard'
  */
 const StatusCard = () => {
   const { account } = useWallet()
-  const { isInitialized, canClaim, hasClaimed, balanceOf } = useContext(NftProviderContext)
+  const { isInitialized, hasClaimed, balanceOf } = useContext(NftProviderContext)
   const TranslateString = useI18n()
 
   if (!account) {
@@ -37,7 +37,7 @@ const StatusCard = () => {
     return <Text>...</Text>
   }
 
-  if (!hasClaimed && canClaim) {
+  if (!hasClaimed) {
     return <YouWonCard />
   }
 

@@ -10,7 +10,7 @@ const YouWonCard = () => {
     <Card isActive>
       <CardBody>
         <CardContent imgSrc="/images/present.svg">
-          <Heading mb="8px">{TranslateString(999, 'You won!')}</Heading>
+          <Heading mb="8px">{TranslateString(999, 'NFTs Avaiable!')}</Heading>
           <Text>{TranslateString(999, 'Claim an NFT from the options below!')}</Text>
         </CardContent>
       </CardBody>

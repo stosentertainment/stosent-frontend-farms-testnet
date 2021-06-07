@@ -4,7 +4,7 @@ import { useWallet } from '@binance-chain/bsc-use-wallet'
 import { Button, Checkbox, Modal, Text } from '@pancakeswap-libs/uikit'
 import useI18n from 'hooks/useI18n'
 import { Nft } from 'config/constants/types'
-import { RABBIT_MINTING_FARM_ADDRESS } from 'config/constants/nfts'
+import { NftFarm, AMOUNT_TO_CLAIM } from 'config/constants/nfts'
 import { useRabbitMintingFarm } from 'hooks/useContract'
 import InfoRow from './InfoRow'
 
@@ -35,13 +35,13 @@ const BurnNftModal: React.FC<BurnNftModalProps> = ({ nft, tokenIds, onSuccess, o
   const [accepted, setAccepted] = useState(false)
   const TranslateString = useI18n()
   const { account } = useWallet()
-  const rabbitMintingContract = useRabbitMintingFarm(RABBIT_MINTING_FARM_ADDRESS)
+  const nftMintingContract = useRabbitMintingFarm(NftFarm)
 
   const handleConfirm = async () => {
     try {
       const [tokenId] = tokenIds
 
-      await rabbitMintingContract.methods
+      await nftMintingContract.methods
         .burnNFT(tokenId)
         .send({ from: account })
         .on('sending', () => {
@@ -75,12 +75,12 @@ const BurnNftModal: React.FC<BurnNftModalProps> = ({ nft, tokenIds, onSuccess, o
         </InfoRow>
         <InfoRow>
           <Text>{TranslateString(999, 'You will receive')}:</Text>
-          <Value>10 CAKE</Value>
+          <Value>${AMOUNT_TO_CLAIM} STOS</Value>
         </InfoRow>
       </ModalContent>
       <ModalContent>
         <Text color="failure">
-          {TranslateString(999, 'When you trade in this NFT to receive CAKE, you will lose access to it forever!')}
+          {TranslateString(999, 'When you trade in this NFT to receive STOS, you will lose access to it forever!')}
         </Text>
         <Text color="failure">{TranslateString(999, 'It will be burned and removed from circulation')}</Text>
       </ModalContent>
