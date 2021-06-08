@@ -65,7 +65,7 @@ const Nft = () => {
       <NftProvider>
         <Page>
           <StyledHero>
-            <Heading as="h1" size="xl" color="#9f0d0d" mb="24px">
+            <Heading as="h1" size="xl" color="secondary" mb="24px">
               My NFT Collections
             </Heading>
             <CustomButton mt="24px">Genesis Collections</CustomButton>

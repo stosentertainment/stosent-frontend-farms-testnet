@@ -18,6 +18,7 @@ const Pools = lazy(() => import('./views/Pools'))
 // const Ifos = lazy(() => import('./views/Ifos'))
 const NotFound = lazy(() => import('./views/NotFound'))
 const Nft = lazy(() => import('./views/Nft'))
+const Detail = lazy(() => import('./views/Detail'))
 const MyCollection = lazy(() => import('./views/MyCollection'))
 
 // This config is required for number formating
@@ -68,6 +69,7 @@ const App: React.FC = () => {
             <Route path="/nft">
               <Nft />
             </Route>
+            <Route path="/detail/:id" component={Detail} />
             <Route path="/my-collection">
               <MyCollection />
             </Route>
