@@ -50,6 +50,10 @@ const NftTable = () => {
     }
   }, [nftTableData])
 
+  /* if(nftTableData.length < 0) {
+    return null;
+  } */
+
   const handleSuccess = () => {
     onTransfer()
     reInitialize()

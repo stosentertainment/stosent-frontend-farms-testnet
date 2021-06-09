@@ -1,7 +1,7 @@
 import { Nft } from './types'
 
-export const NftFarm = '0x686C8B34E4D471101659713B9F7B3EEd93d5E757'
-export const NFT = '0xe25CB4E793284FE78AB8154B51b03D8c616CEdFb'
+export const NftFarm = '0xe876d9A1A8AA778c67bf04fe943677Df84eD99AA'
+export const NFT = '0x1605854923FC0bDC13F0336C06f4fB1c1e6e83eE'
 export const AMOUNT_TO_CLAIM = '10'
 
 const Nfts: Nft[] = [
@@ -19,8 +19,8 @@ const Nfts: Nft[] = [
     nftId: 0,
     tokenAmount: 5,
     tokenSupply: 30,
-    nftFarmContract: '0x3627Ca89675b42489aD39619A92dd0Ce24CA90bB',
-    nftContract: '0xa521D5FA64D0aAdB4ee607BAb20142aA173e4392',
+    nftFarmContract: '0xe876d9A1A8AA778c67bf04fe943677Df84eD99AA',
+    nftContract: '0x1605854923FC0bDC13F0336C06f4fB1c1e6e83eE',
   },
   {
     name: 'Yacht Pass NFT',
@@ -36,8 +36,8 @@ const Nfts: Nft[] = [
     nftId: 1,
     tokenAmount: 10,
     tokenSupply: 20,
-    nftFarmContract: '0x3627Ca89675b42489aD39619A92dd0Ce24CA90bB',
-    nftContract: '0xa521D5FA64D0aAdB4ee607BAb20142aA173e4392',
+    nftFarmContract: '0xe876d9A1A8AA778c67bf04fe943677Df84eD99AA',
+    nftContract: '0x1605854923FC0bDC13F0336C06f4fB1c1e6e83eE',
   },
   {
     name: 'VIP WEEK Pass NFT',
@@ -53,8 +53,8 @@ const Nfts: Nft[] = [
     nftId: 2,
     tokenAmount: 15,
     tokenSupply: 10,
-    nftFarmContract: '0x3627Ca89675b42489aD39619A92dd0Ce24CA90bB',
-    nftContract: '0xa521D5FA64D0aAdB4ee607BAb20142aA173e4392',
+    nftFarmContract: '0xe876d9A1A8AA778c67bf04fe943677Df84eD99AA',
+    nftContract: '0x1605854923FC0bDC13F0336C06f4fB1c1e6e83eE',
   },
 ]
 
