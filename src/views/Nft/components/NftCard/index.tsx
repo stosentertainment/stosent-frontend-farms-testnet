@@ -78,10 +78,10 @@ const NftCard: React.FC<NftCardProps> = ({ nft }) => {
     getTokenIds,
     reInitialize,
     allowMultipleClaims,
-    rarity,
+    // rarity,
     priceMultiplier,
     maxMintPerNft,
-    tokenPerBurn,
+    // tokenPerBurn,
     amounts,
     maxMintByNft,
     prices,
@@ -96,7 +96,7 @@ const NftCard: React.FC<NftCardProps> = ({ nft }) => {
   // tokenPerBurn global price
 
   const { nftId, name, previewImage, originalImage, description, tokenAmount, tokenSupply } = nft
-  const PRICE = prices[nftId] || tokenPerBurn // here we get the price
+  // const PRICE = prices[nftId] || tokenPerBurn // here we get the price
 
   const loggedIn = account !== null
 
