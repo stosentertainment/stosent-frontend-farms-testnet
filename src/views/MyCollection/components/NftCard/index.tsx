@@ -85,10 +85,8 @@ const NftCard: React.FC<NftCardProps> = ({ nft }) => {
     getTokenIds,
     reInitialize,
     allowMultipleClaims,
-    rarity,
     priceMultiplier,
     maxMintPerNft,
-    tokenPerBurn,
     amounts,
     maxMintByNft,
     prices,
@@ -96,8 +94,8 @@ const NftCard: React.FC<NftCardProps> = ({ nft }) => {
   } = useContext(NftProviderContext)
   const { account } = useWallet()
 
-  console.log('CONTRACT/GALLERY INFO:', totalSupplyDistributed, rarity, priceMultiplier, maxMintPerNft, tokenPerBurn)
-  console.log('LIMITS BY NFT:', tokenPerBurn, amounts, maxMintByNft, prices)
+  console.log('CONTRACT/GALLERY INFO:', totalSupplyDistributed, priceMultiplier, maxMintPerNft)
+  console.log('LIMITS BY NFT:', amounts, maxMintByNft, prices)
 
   // maxMintPerNft limit max amount that a nft can be minted
   // maxMintByNft array containing individual amount of mint per nft index
@@ -107,7 +105,6 @@ const NftCard: React.FC<NftCardProps> = ({ nft }) => {
   console.log(ownerById)
 
   const { nftId, name, previewImage, originalImage, fileType, description, metadata, tokenAmount, tokenSupply } = nft
-  const PRICE = prices[nft.nftId] || tokenPerBurn // here we get the price
 
   const nftIndex = hasClaimed && hasClaimed.indexOf(nftId)
 

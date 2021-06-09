@@ -36,10 +36,8 @@ type State = {
   nftMap: NftMap
 
   allowMultipleClaims: boolean
-  rarity: string
   priceMultiplier: number
   maxMintPerNft: number
-  tokenPerBurn: number
 }
 
 type Context = {
@@ -65,10 +63,8 @@ const NftProvider: React.FC<NftProviderProps> = ({ children }) => {
     nftMap: {},
 
     allowMultipleClaims: true,
-    rarity: '',
     priceMultiplier: 0,
     maxMintPerNft: 0,
-    tokenPerBurn: 0,
 
     amounts: [],
     maxMintByNft: [],
@@ -93,10 +89,8 @@ const NftProvider: React.FC<NftProviderProps> = ({ children }) => {
           currentDistributedSupplyArr,
 
           allowMultipleClaimsArr,
-          rarityArr,
           priceMultiplierArr,
           maxMintPerNftArr,
-          tokenPerBurnArr,
         ] = await multicall(nftFarm, [
           { address: NftFarm, name: 'startBlockNumber' },
           { address: NftFarm, name: 'endBlockNumber' },
@@ -104,10 +98,8 @@ const NftProvider: React.FC<NftProviderProps> = ({ children }) => {
           { address: NftFarm, name: 'totalSupplyDistributed' },
           { address: NftFarm, name: 'currentDistributedSupply' },
           { address: NftFarm, name: 'allowMultipleClaims' },
-          { address: NftFarm, name: 'rarity' },
           { address: NftFarm, name: 'priceMultiplier' },
           { address: NftFarm, name: 'maxMintPerNft' },
-          { address: NftFarm, name: 'tokenPerBurn' },
         ])
 
         // TODO: Figure out why these are coming back as arrays
@@ -126,10 +118,8 @@ const NftProvider: React.FC<NftProviderProps> = ({ children }) => {
           currentDistributedSupply: currentDistributedSupply.toNumber(),
           totalSupplyDistributed: totalSupplyDistributed.toNumber(),
           allowMultipleClaims: allowMultipleClaimsArr[0],
-          rarity: rarityArr[0].toString(),
           priceMultiplier: parseFloat(priceMultiplierArr[0].toString()),
           maxMintPerNft: parseInt(maxMintPerNftArr[0].toString()),
-          tokenPerBurn: getFromWei(tokenPerBurnArr[0]),
         }))
       } catch (error) {
         console.error('an error occured', error)
@@ -182,6 +172,7 @@ const NftProvider: React.FC<NftProviderProps> = ({ children }) => {
           }
 
           const getNftData = async (index: number) => {
+            
             try {
               const tokenId = await nftContract.methods.tokenOfOwnerByIndex(account, index).call()
               const tokenURI = await nftContract.methods.tokenURI(parseInt(tokenId, 10)).call()
@@ -198,7 +189,7 @@ const NftProvider: React.FC<NftProviderProps> = ({ children }) => {
                 nftDetailLink = `/legendary-detail/${hashId}`
               }
 
-              const nftPreviewImage = nfts.filter((nft) => nftName === nft.name).map((nft) => nft.previewImage)
+              const nftPreviewImage = nfts.filter((nft) => nftName === nft.name).map((nft) => nft.previewImage);
 
               return {
                 tokenId: parseInt(tokenId, 10),
