@@ -176,6 +176,11 @@ const NftProvider: React.FC<NftProviderProps> = ({ children }) => {
             try {
               const tokenId = await nftContract.methods.tokenOfOwnerByIndex(account, index).call()
               const tokenURI = await nftContract.methods.tokenURI(parseInt(tokenId, 10)).call()
+              const approvedStatus = await nftContract.methods.getApproved(parseInt(tokenId, 10)).call()
+              let isApproved = false;
+              if(approvedStatus !== '0x0000000000000000000000000000000000000000') {
+                isApproved = true;
+              }
               const { name: nftName, rarity } = await getNftDetailData(tokenURI)
 
               const { fullUrlArray } = getUrlPartsInfo(tokenURI)
@@ -191,6 +196,7 @@ const NftProvider: React.FC<NftProviderProps> = ({ children }) => {
                 nftName,
                 nftPreviewImage,
                 nftDetailLink,
+                isApproved
               }
             } catch (error) {
               return null
@@ -269,6 +275,7 @@ const NftProvider: React.FC<NftProviderProps> = ({ children }) => {
       setState((prevState) => ({ ...prevState, isInitialized: false }))
     }
   }
+
 
   return (
     <NftProviderContext.Provider value={{ ...state, canBurnNft, getTokenIds, reInitialize }}>

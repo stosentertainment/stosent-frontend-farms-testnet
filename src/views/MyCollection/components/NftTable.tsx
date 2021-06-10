@@ -1,4 +1,5 @@
 import React, { useState, useContext, useCallback, useEffect } from 'react'
+import { useWallet } from '@binance-chain/bsc-use-wallet'
 import {
   Card,
   CardBody,
@@ -16,9 +17,10 @@ import {
 
 import { Link } from 'react-router-dom'
 import { Table } from 'antd'
+import { usePancakeRabbits } from 'hooks/useContract'
 import useI18n from 'hooks/useI18n'
+import { NftFarm, NFT } from 'config/constants/nfts'
 import orderBy from 'lodash/orderBy'
-import nfts from 'config/constants/nfts'
 import NftCard from './NftCard'
 import NftGrid from './NftGrid'
 import { NftProviderContext } from '../contexts/NftProvider'
@@ -32,6 +34,12 @@ const NftTable = () => {
     nftTableData: [],
   })
 
+
+  const { account } = useWallet()
+  const [requestedApproval, setRequestedApproval] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+
+  const [error, setError] = useState(null)
   const { nftTableData, reInitialize } = useContext(NftProviderContext)
 
   const TranslateString = useI18n()
@@ -45,14 +53,47 @@ const NftTable = () => {
         isDataFetched: true,
         nftTableData,
       }))
-    } catch (error) {
-      console.error(error)
+    } catch (err) {
+      console.log(err);
     }
   }, [nftTableData])
+  const nftContract = usePancakeRabbits(NFT)
 
-  /* if(nftTableData.length < 0) {
-    return null;
-  } */
+  const handleApprove = useCallback(async (tokenId) => {
+    console.log("tokenId", tokenId);
+    try {
+      setState((prevState) => ({ ...prevState, isLoading: true }))
+      setRequestedApproval(true)
+        console.log("onApprove", tokenId);
+  
+
+    console.log("nftContract", nftContract, NftFarm, tokenId);
+    await nftContract.methods
+          .approve(NftFarm, tokenId)
+          .send({ from: account })
+          .on('sending', () => {
+            setIsLoading(true)
+          }).on('receipt', () => {
+            console.log("receipt")
+          })
+          .on('error', () => {
+            setError('Unable to transfer NFT')
+            setIsLoading(false)
+          })
+          setState((prevState) => ({
+            ...prevState,
+            isLoading: false,
+            isDataFetched: true,
+            nftTableData,
+          }))
+
+    reInitialize()
+      setRequestedApproval(false)
+    } catch (e) {
+      console.error(e)
+    }
+  }, [ nftTableData, account, nftContract, reInitialize])
+
 
   const handleSuccess = () => {
     onTransfer()
@@ -117,22 +158,38 @@ const NftTable = () => {
           nftContract: '',
           bunnyId: 0,
         }
+        const isApproved = record.isApproved;
         const tokenIds = [record.tokenId]
         const [onPresentTransferModal] = ModalWrapper(
           <TransferNftModal nft={nft} tokenIds={tokenIds} onSuccess={handleSuccess} />,
         )
-        return (
+        if(isApproved) {
+          return (
+            <Button
+              fullWidth
+              variant="primary"
+              mt="24px"
+              onClick={() => {
+                onPresentTransferModal()
+              }}
+            >
+              {TranslateString(999, 'Transfer')}
+            </Button>
+          )
+        }
+          return (
           <Button
             fullWidth
             variant="primary"
             mt="24px"
             onClick={() => {
-              onPresentTransferModal()
+              handleApprove(parseInt(record.tokenId, 10))
             }}
+            disabled={requestedApproval}
           >
-            {TranslateString(999, 'Transfer')}
+            Approve
           </Button>
-        )
+          );
       },
       key: '',
     },
