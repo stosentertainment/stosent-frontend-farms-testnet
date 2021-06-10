@@ -88,11 +88,6 @@ const NftTable = () => {
       key: 'tokenId',
     },
     {
-      title: 'Rarity',
-      dataIndex: 'rarity',
-      key: 'rarity',
-    },
-    {
       title: 'NFT Details',
       dataIndex: 'nftDetailLink',
       render: (text, record) => (

@@ -181,21 +181,13 @@ const NftProvider: React.FC<NftProviderProps> = ({ children }) => {
               const { fullUrlArray } = getUrlPartsInfo(tokenURI)
               const hash = fullUrlArray[3]
               const hashId = parseInt(fullUrlArray[4].substring(0, fullUrlArray[4].length - 5), 10)
-              let nftDetailLink = ''
-              if (rarity === 'Base' || rarity === 'Rare') {
-                nftDetailLink = `/detail/${hashId}`
-              } else if (rarity === 'Epic') {
-                nftDetailLink = `/epic-detail/${hashId}`
-              } else if (rarity === 'Legendary') {
-                nftDetailLink = `/legendary-detail/${hashId}`
-              }
+              const nftDetailLink = `/detail/${hashId}`;
 
               const nftPreviewImage = nfts.filter((nft) => nftName === nft.name).map((nft) => nft.previewImage);
 
               return {
                 tokenId: parseInt(tokenId, 10),
                 type: `${hash} ,  ${hashId}`,
-                rarity,
                 nftName,
                 nftPreviewImage,
                 nftDetailLink,
