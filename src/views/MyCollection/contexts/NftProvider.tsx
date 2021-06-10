@@ -177,9 +177,10 @@ const NftProvider: React.FC<NftProviderProps> = ({ children }) => {
               const tokenId = await nftContract.methods.tokenOfOwnerByIndex(account, index).call()
               const tokenURI = await nftContract.methods.tokenURI(parseInt(tokenId, 10)).call()
               const { name: nftName, rarity } = await getNftDetailData(tokenURI)
+
               const { fullUrlArray } = getUrlPartsInfo(tokenURI)
-              const hash = fullUrlArray[4]
-              const hashId = parseInt(fullUrlArray[5].substring(0, fullUrlArray[5].length - 5), 10)
+              const hash = fullUrlArray[3]
+              const hashId = parseInt(fullUrlArray[4].substring(0, fullUrlArray[4].length - 5), 10)
               let nftDetailLink = ''
               if (rarity === 'Base' || rarity === 'Rare') {
                 nftDetailLink = `/detail/${hashId}`
