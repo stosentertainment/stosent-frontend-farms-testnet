@@ -209,15 +209,15 @@ const NftCard: React.FC<NftCardProps> = ({ nft }) => {
         </DetailsButton>
         {state.isOpen && (
           <InfoBlock>
-          <List
-            size="small"
-            dataSource={description.split('.')}
-            renderItem={(item) => (
-              <Text as="p" color="textSubtle" mb="16px" style={{ textAlign: 'left' }}>
-                {item}
-              </Text>
-            )}
-          />
+            <List
+              size="small"
+              dataSource={description.split('.')}
+              renderItem={(item) => (
+                <Text as="p" color="textSubtle" mb="16px" style={{ textAlign: 'left' }}>
+                  {item}
+                </Text>
+              )}
+            />
             <InfoRow>
               <Text>{TranslateString(999, 'Number minted')}:</Text>
               <Value>
