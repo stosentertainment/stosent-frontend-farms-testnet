@@ -13,6 +13,7 @@ import {
   useModal,
 } from '@pancakeswap-libs/uikit'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
+import { List } from 'antd'
 import useI18n from 'hooks/useI18n'
 import { Nft } from 'config/constants/types'
 import { AMOUNT_TO_CLAIM } from 'config/constants/nfts'
@@ -208,9 +209,15 @@ const NftCard: React.FC<NftCardProps> = ({ nft }) => {
         </DetailsButton>
         {state.isOpen && (
           <InfoBlock>
-            <Text as="p" color="textSubtle" mb="16px" style={{ textAlign: 'center' }}>
-              {description}
-            </Text>
+          <List
+            size="small"
+            dataSource={description.split('.')}
+            renderItem={(item) => (
+              <Text as="p" color="textSubtle" mb="16px" style={{ textAlign: 'left' }}>
+                {item}
+              </Text>
+            )}
+          />
             <InfoRow>
               <Text>{TranslateString(999, 'Number minted')}:</Text>
               <Value>
