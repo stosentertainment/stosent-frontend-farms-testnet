@@ -19,7 +19,7 @@ const NftInWalletCard = ({ balanceOf }) => {
               <strong>{balanceOf}</strong>
             </Text>
             <Button variant="secondary">
-              <Link to='/my-collection'>View My NFTs</Link>
+              <Link to="/my-collection">View My NFTs</Link>
             </Button>
           </InfoRow>
         </CardContent>

@@ -7,8 +7,8 @@ import useTheme from 'hooks/useTheme'
 import { useSTOSPrice } from 'state/hooks'
 import { Menu as UikitMenu } from '@pancakeswap-libs/uikit'
 import config from './config'
-import './style.css'
 import 'antd/dist/antd.css'
+import './style.css'
 
 const Menu = (props) => {
   const { account, connect, reset } = useWallet()
@@ -28,7 +28,6 @@ const Menu = (props) => {
       setLang={setSelectedLanguage}
       cakePriceUsd={STOSValue.toNumber()}
       links={config}
-      backgroundVideo="./videos/bg_video.mp4"
       {...props}
     />
   )
