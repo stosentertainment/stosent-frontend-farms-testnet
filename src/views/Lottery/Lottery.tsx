@@ -30,14 +30,14 @@ const Lottery: React.FC = () => {
   const [currentLotteryNumber, setCurrentLotteryNumber] = useState(0)
   const [mostRecentLotteryNumber, setMostRecentLotteryNumber] = useState(1)
 
-  useEffect(() => {
+  /* useEffect(() => {
     fetch(`https://api.pancakeswap.com/api/lotteryHistory`)
       .then((response) => response.json())
       .then((data) => setHistoryData(data))
       .catch(() => {
         setHistoryError(true)
       })
-  }, [])
+  }, []) */
 
   useEffect(() => {
     const getInitialLotteryIndex = async () => {
