@@ -106,7 +106,7 @@ export const getTicketSaleTime = (currentMillis): string => {
 }
 
 export const getLotteryDrawTime = (): string => {
-  const { days, hours, mins  } = tick()
+  const { days, hours, mins } = tick()
   return daysHoursAndMinutesString(days, hours, mins)
 }
 
