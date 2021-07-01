@@ -53,7 +53,7 @@ const tick = () => {
   const mins = Math.floor(secs / 60)
   secs %= 60
 
-  return { days, hours, mins }
+  return { days: curday, hours, mins }
 }
 /* New weekly countdown helper, starts every Wednesday 8PM :: Ends Here */
 
