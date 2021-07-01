@@ -55,8 +55,8 @@ const BuyTicketModal: React.FC<BuyTicketModalProps> = ({ max, onDismiss }) => {
   }, [onMultiBuy, setRequestedBuy, maxNumber, val])
 
   const handleSelectMax = useCallback(() => {
-    if (Number(maxTickets) > 50) {
-      setVal('50')
+    if (Number(maxTickets) > 40) {
+      setVal('40')
     } else {
       setVal(maxTickets.toString())
     }
@@ -95,7 +95,7 @@ const BuyTicketModal: React.FC<BuyTicketModalProps> = ({ max, onDismiss }) => {
         <Button
           id="lottery-buy-complete"
           fullWidth
-          disabled={pendingTx || parseInt(val) > Number(maxTickets) || parseInt(val) > 50 || parseInt(val) < 1}
+          disabled={pendingTx || parseInt(val) > Number(maxTickets) || parseInt(val) > 40 || parseInt(val) < 1}
           onClick={async () => {
             setPendingTx(true)
             await handleBuy()
