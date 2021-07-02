@@ -8,13 +8,12 @@ let ticker
 
 const getSeconds = () => {
   const nowDate = new Date()
-  const dy = 3 // Sunday through Saturday, 0 to 6
+  const dy = 4 // Sunday through Saturday, 0 to 6
   const countertime = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate(), 20, 0, 0) // 20 out of 24 hours = 8pm
 
   const curtime = nowDate.getTime() // current time
   const atime = countertime.getTime() // countdown time
   let diff = (atime - curtime) / 1000
-  console.log('adsfa', diff)
   if (diff > 0) {
     curday = dy - nowDate.getDay()
   } else {

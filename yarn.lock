@@ -1876,7 +1876,7 @@
 
 "@pancakeswap-libs/uikit@stosentertainment/stosent-uikit":
   version "0.10.2"
-  resolved "https://codeload.github.com/stosentertainment/stosent-uikit/tar.gz/73570e37720884fc277c78c24d997b75639ec912"
+  resolved "https://codeload.github.com/stosentertainment/stosent-uikit/tar.gz/f098358480260394178ca5c00383f980280ed3b1"
   dependencies:
     "@types/lodash" "^4.14.162"
     "@types/styled-system" "^5.1.10"
