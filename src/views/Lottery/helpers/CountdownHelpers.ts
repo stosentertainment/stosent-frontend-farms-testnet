@@ -7,7 +7,10 @@ let secTime
 let ticker
 
 const getSeconds = () => {
-  const nowDate = new Date()
+  const dt = new Date();
+  dt.setTime(dt.getTime()+dt.getTimezoneOffset()*60*1000);
+  const offset = -300; // Timezone offset for EST in minutes.
+  const nowDate = new Date(dt.getTime() + offset*60*1000)
   const dy = 4 // Sunday through Saturday, 0 to 6
   const countertime = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate(), 20, 0, 0) // 20 out of 24 hours = 8pm
 
