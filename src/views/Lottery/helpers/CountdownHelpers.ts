@@ -20,7 +20,7 @@ const getDrawSeconds = () => {
   if (diff > 0) {
     curday = dy - nowDate.getDay()
   } else {
-    curday = dy - nowDate.getDay()
+    curday = dy - nowDate.getDay() - 1
   } // after countdown time
   if (curday < 0) {
     curday += 7
@@ -45,7 +45,7 @@ const getSalesSeconds = () => {
   if (diff > 0) {
     curday = dy - nowDate.getDay()
   } else {
-    curday = dy - nowDate.getDay()
+    curday = dy - nowDate.getDay() - 1
   } // after countdown time
   if (curday < 0) {
     curday += 7
