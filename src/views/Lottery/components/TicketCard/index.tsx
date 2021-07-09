@@ -55,7 +55,7 @@ const TicketCard: React.FC<CardProps> = ({ isSecondCard = false }) => {
   const ticketsLength = tickets.length
 
   const currentMillis = useCurrentTime()
-  const timeUntilTicketSale = lotteryHasDrawn && getTicketSaleTime(currentMillis)
+  const timeUntilTicketSale = lotteryHasDrawn && getTicketSaleTime()
 
   return (
     <StyledCard isSecondCard={isSecondCard}>
